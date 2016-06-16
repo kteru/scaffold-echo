@@ -16,7 +16,7 @@ type Config struct {
 	DBHandler    db.Handler
 }
 
-// GetConfig gets the Config from echo.Context
+// GetConfig gets the Config from the Context
 func GetConfig(c echo.Context) *Config {
 	return c.Get("cfg").(*Config)
 }

@@ -14,7 +14,7 @@ type Attribute struct {
 	User      *model.User
 }
 
-// GetAttribute gets the Attribute from echo.Context
+// GetAttribute gets the Attribute from the Context
 func GetAttribute(c echo.Context) *Attribute {
 	return c.Get("attr").(*Attribute)
 }

@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// SetAttribute sets a empty Attribute to echo.Context
+// SetAttribute sets a empty Attribute to the Context
 func SetAttribute() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
