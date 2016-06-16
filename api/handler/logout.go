@@ -9,11 +9,11 @@ import (
 
 // Logout handler
 func Logout(c echo.Context) error {
-	ctx := core.GetContext(c)
+	attr := core.GetAttribute(c)
 
-	delete(ctx.Session.Values, core.SessionKeyUserID)
-	ctx.Session.Options.MaxAge = -1
+	delete(attr.Session.Values, core.SessionKeyUserID)
+	attr.Session.Options.MaxAge = -1
 
-	ctx.SaveSession(c)
+	attr.SaveSession(c)
 	return c.String(http.StatusOK, "")
 }

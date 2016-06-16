@@ -12,13 +12,13 @@ import (
 func RequestID() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-			ctx := core.GetContext(c)
+			attr := core.GetAttribute(c)
 
 			b := make([]byte, 12)
 			rand.Read(b)
 			requestID := base64.URLEncoding.EncodeToString(b)
 
-			ctx.RequestID = requestID
+			attr.RequestID = requestID
 			c.Response().Header().Set("X-Request-Id", requestID)
 
 			return next(c)

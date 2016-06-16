@@ -12,9 +12,9 @@ func AuthUser() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			cfg := core.GetConfig(c)
-			ctx := core.GetContext(c)
+			attr := core.GetAttribute(c)
 
-			userID, ok := ctx.Session.Values[core.SessionKeyUserID]
+			userID, ok := attr.Session.Values[core.SessionKeyUserID]
 			if !ok {
 				return c.String(http.StatusUnauthorized, http.StatusText(http.StatusUnauthorized))
 			}
@@ -27,7 +27,7 @@ func AuthUser() echo.MiddlewareFunc {
 				return c.String(http.StatusUnauthorized, http.StatusText(http.StatusUnauthorized))
 			}
 
-			ctx.User = user
+			attr.User = user
 
 			return next(c)
 		}

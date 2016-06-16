@@ -7,21 +7,21 @@ import (
 	"github.com/labstack/echo/engine/standard"
 )
 
-// Context represents contexts of the current HTTP request
-type Context struct {
+// Attribute represents attributes of the current HTTP request
+type Attribute struct {
 	RequestID string
 	Session   *sessions.Session
 	User      *model.User
 }
 
-// GetContext gets the Context from echo.Context
-func GetContext(c echo.Context) *Context {
-	return c.Get("ctx").(*Context)
+// GetAttribute gets the Attribute from echo.Context
+func GetAttribute(c echo.Context) *Attribute {
+	return c.Get("attr").(*Attribute)
 }
 
 // SaveSession saves the session
-func (ctx *Context) SaveSession(c echo.Context) {
+func (attr *Attribute) SaveSession(c echo.Context) {
 	r := c.Request().(*standard.Request).Request
 	w := c.Response().(*standard.Response).ResponseWriter
-	ctx.Session.Save(r, w)
+	attr.Session.Save(r, w)
 }

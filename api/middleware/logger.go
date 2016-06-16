@@ -12,7 +12,7 @@ func Logger() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			cfg := core.GetConfig(c)
-			ctx := core.GetContext(c)
+			attr := core.GetAttribute(c)
 
 			req := c.Request()
 			res := c.Response()
@@ -24,7 +24,7 @@ func Logger() echo.MiddlewareFunc {
 				ra = ip
 			}
 
-			cfg.Logger.Printf("[%s] [%s] [%s] Started %s %q\n", core.LogRoll, ctx.RequestID, ra, req.Method(), req.URI())
+			cfg.Logger.Printf("[%s] [%s] [%s] Started %s %q\n", core.LogRoll, attr.RequestID, ra, req.Method(), req.URI())
 
 			t1 := time.Now()
 			if err := next(c); err != nil {
@@ -32,7 +32,7 @@ func Logger() echo.MiddlewareFunc {
 			}
 			t2 := time.Now()
 
-			cfg.Logger.Printf("[%s] [%s] [%s] Returning %03d (%v)\n", core.LogRoll, ctx.RequestID, ra, res.Status(), t2.Sub(t1))
+			cfg.Logger.Printf("[%s] [%s] [%s] Returning %03d (%v)\n", core.LogRoll, attr.RequestID, ra, res.Status(), t2.Sub(t1))
 
 			return nil
 		}

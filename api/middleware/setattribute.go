@@ -5,13 +5,13 @@ import (
 	"github.com/labstack/echo"
 )
 
-// SetContext sets a empty Context to echo.Context
-func SetContext() echo.MiddlewareFunc {
+// SetAttribute sets a empty Attribute to echo.Context
+func SetAttribute() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-			ctx := &core.Context{}
+			attr := &core.Attribute{}
 
-			c.Set("ctx", ctx)
+			c.Set("attr", attr)
 			return next(c)
 		}
 	}

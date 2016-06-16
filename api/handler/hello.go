@@ -11,12 +11,12 @@ import (
 
 // Hello handler
 func Hello(c echo.Context) error {
-	ctx := core.GetContext(c)
+	attr := core.GetAttribute(c)
 
 	resHello := response.Hello{
-		Message: fmt.Sprintf("Hello, %s!", ctx.User.Username),
+		Message: fmt.Sprintf("Hello, %s!", attr.User.Username),
 	}
 
-	ctx.SaveSession(c)
+	attr.SaveSession(c)
 	return c.JSON(http.StatusOK, resHello)
 }

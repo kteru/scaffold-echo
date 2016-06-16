@@ -11,12 +11,12 @@ func Session() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			cfg := core.GetConfig(c)
-			ctx := core.GetContext(c)
+			attr := core.GetAttribute(c)
 
 			r := c.Request().(*standard.Request).Request
 
-			ctx.Session, _ = cfg.SessionStore.Get(r, core.SessionName)
-			ctx.Session.Options.MaxAge = core.SessionExpire
+			attr.Session, _ = cfg.SessionStore.Get(r, core.SessionName)
+			attr.Session.Options.MaxAge = core.SessionExpire
 
 			return next(c)
 		}
