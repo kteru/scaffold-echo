@@ -14,6 +14,16 @@ type Attribute struct {
 	User      *model.User
 }
 
+// SetAttribute sets a empty Attribute to the Context
+func SetAttribute() echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Set("attr", &Attribute{})
+			return next(c)
+		}
+	}
+}
+
 // GetAttribute gets the Attribute from the Context
 func GetAttribute(c echo.Context) *Attribute {
 	return c.Get("attr").(*Attribute)

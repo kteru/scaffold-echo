@@ -16,6 +16,16 @@ type Config struct {
 	DBHandler    db.Handler
 }
 
+// SetConfig sets the core.Config to the Context
+func SetConfig(cfg *Config) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Set("cfg", cfg)
+			return next(c)
+		}
+	}
+}
+
 // GetConfig gets the Config from the Context
 func GetConfig(c echo.Context) *Config {
 	return c.Get("cfg").(*Config)

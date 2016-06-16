@@ -59,6 +59,10 @@ func NewServer(c *ServerConfig) (*Server, error) {
 // Serve starts serving
 func (s *Server) Serve() error {
 	e := echo.New()
+
+	e.Use(core.SetConfig(s.config))
+	e.Use(core.SetAttribute())
+
 	s.route(e)
 
 	std := standard.New(fmt.Sprintf("%s:%d", s.ListenHost, s.ListenPort))

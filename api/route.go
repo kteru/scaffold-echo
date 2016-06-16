@@ -9,8 +9,6 @@ import (
 
 // route configures routes
 func (s *Server) route(e *echo.Echo) {
-	e.Use(middleware.SetConfig(s.config))
-	e.Use(middleware.SetAttribute())
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Logger())
 	e.Use(echoMw.Recover())
