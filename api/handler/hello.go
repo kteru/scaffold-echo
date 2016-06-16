@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Hello ...
+// Hello handler
 func Hello(c echo.Context) error {
 	ctx := core.GetContext(c)
 

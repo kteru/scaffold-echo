@@ -1,6 +1,6 @@
 package model
 
-// User ...
+// User model
 type User struct {
 	ID       uint
 	Username string

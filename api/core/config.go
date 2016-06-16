@@ -9,19 +9,19 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Config ...
+// Config is the configuration to process requests
 type Config struct {
 	Logger       *log.Logger
 	SessionStore *sessions.CookieStore
 	DBHandler    db.Handler
 }
 
-// GetConfig ...
+// GetConfig gets the Config from echo.Context
 func GetConfig(c echo.Context) *Config {
 	return c.Get("cfg").(*Config)
 }
 
-// ValidConfig ...
+// ValidConfig validates the Config
 func ValidConfig(cfg *Config) error {
 	switch {
 	case cfg == nil:

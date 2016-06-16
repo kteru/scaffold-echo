@@ -12,7 +12,7 @@ import (
 	"github.com/labstack/echo/engine/standard"
 )
 
-// ServerConfig ...
+// ServerConfig is used to configure a Server
 type ServerConfig struct {
 	ListenHost string
 	ListenPort int
@@ -21,13 +21,13 @@ type ServerConfig struct {
 	DBHandler  db.Handler
 }
 
-// Server ...
+// Server represents a Server
 type Server struct {
 	ServerConfig
 	config *core.Config
 }
 
-// NewServer ...
+// NewServer creates a new Server instance
 func NewServer(c *ServerConfig) (*Server, error) {
 	if c.Logger == nil {
 		return nil, fmt.Errorf("`Logger` not found")
@@ -56,7 +56,7 @@ func NewServer(c *ServerConfig) (*Server, error) {
 	return &s, nil
 }
 
-// Serve ...
+// Serve starts serving
 func (s *Server) Serve() error {
 	e := echo.New()
 	s.route(e)

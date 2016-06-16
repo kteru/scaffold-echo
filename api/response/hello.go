@@ -1,6 +1,6 @@
 package response
 
-// Hello ...
+// Hello response
 type Hello struct {
 	Message string `json:"message"`
 }

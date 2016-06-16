@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Login ...
+// Login handler
 func Login(c echo.Context) error {
 	cfg := core.GetConfig(c)
 	ctx := core.GetContext(c)

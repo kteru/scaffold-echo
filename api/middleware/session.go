@@ -6,7 +6,7 @@ import (
 	"github.com/labstack/echo/engine/standard"
 )
 
-// Session ...
+// Session prepares to use the session
 func Session() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {

@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Logout ...
+// Logout handler
 func Logout(c echo.Context) error {
 	ctx := core.GetContext(c)
 

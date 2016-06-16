@@ -7,7 +7,7 @@ import (
 	echoMw "github.com/labstack/echo/middleware"
 )
 
-// route ...
+// route configures routes
 func (s *Server) route(e *echo.Echo) {
 	e.Use(middleware.SetConfig(s.config))
 	e.Use(middleware.SetContext())

@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// SetContext ...
+// SetContext sets a empty Context to echo.Context
 func SetContext() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {

@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Logger ...
+// Logger logs HTTP requests
 func Logger() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {

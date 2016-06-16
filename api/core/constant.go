@@ -1,12 +1,9 @@
 package core
 
+// constants
 const (
-	// LogRoll ...
-	LogRoll = "API"
-	// SessionName ...
-	SessionName = "_sess"
-	// SessionExpire ...
-	SessionExpire = 60 * 60 * 24 * 3
-	// SessionKeyUserID ...
+	LogRoll          = "API"
+	SessionName      = "_sess"
+	SessionExpire    = 60 * 60 * 24 * 3
 	SessionKeyUserID = "id"
 )
