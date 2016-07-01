@@ -17,12 +17,12 @@ func (s *Server) route(e *echo.Echo) {
 	g := e.Group("/api/v1")
 	{
 		authMws := []echo.MiddlewareFunc{}
-		g.Post("/login", handler.Login, authMws...)
-		g.Post("/logout", handler.Logout, authMws...)
+		g.POST("/login", handler.Login, authMws...)
+		g.POST("/logout", handler.Logout, authMws...)
 
 		normalMws := []echo.MiddlewareFunc{
 			middleware.AuthUser(),
 		}
-		g.Get("/hello", handler.Hello, normalMws...)
+		g.GET("/hello", handler.Hello, normalMws...)
 	}
 }
